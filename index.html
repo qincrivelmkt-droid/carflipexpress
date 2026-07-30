@@ -50,8 +50,9 @@ header{
   background:rgba(0,0,0,.88);backdrop-filter:blur(12px);
   border-bottom:1px solid var(--cinza-borda);
 }
-.hd{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1120px;margin:0 auto}
-.hd img{height:40px;width:auto;border-radius:6px}
+.hd{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1120px;margin:0 auto}
+.hd img{height:64px;width:auto;border-radius:8px}
+@media(max-width:480px){.hd img{height:52px}}
 .hd-cta{
   background:var(--branco);color:var(--preto);
   padding:10px 18px;border-radius:100px;
@@ -157,8 +158,19 @@ header{
 /* CRUZEIRO */
 .cruz{
   border:1px solid var(--dourado);border-radius:18px;overflow:hidden;background:var(--preto-2);
+  max-width:760px;margin:0 auto;
 }
-.cruz img{width:100%;display:block}
+.cruz-img{
+  width:100%;max-height:340px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;background:var(--preto-3);
+}
+.cruz-img img{
+  width:100%;height:100%;max-height:340px;
+  object-fit:cover;object-position:center;display:block;
+}
+@media(max-width:600px){
+  .cruz-img,.cruz-img img{max-height:220px}
+}
 .cruz-txt{padding:32px 26px;text-align:center}
 .cruz-txt .tagc{
   display:inline-block;background:var(--dourado);color:var(--preto);
@@ -256,11 +268,17 @@ footer a{color:var(--branco);text-decoration:none}
       <h2>Veja como funciona por dentro</h2>
       <p class="lead">Atendimento, avaliação e perícia do seu carro, do jeito que acontece de verdade.</p>
     </div>
-    <div class="video-box mt32">
-      <!-- SUBSTITUA pelo caminho do seu vídeo -->
-      <video controls playsinline poster="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/atendimento.jpeg">
+    <div class="video-box mt32" id="videoBox">
+      <!-- COLOQUE o arquivo "video-carflip.mp4" nesta mesma pasta -->
+      <video id="videoCarflip" controls playsinline preload="metadata"
+             poster="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/atendimento.jpeg">
         <source src="video-carflip.mp4" type="video/mp4">
       </video>
+      <div class="video-ph" id="videoAviso" style="display:none">
+        <strong style="color:#fff;display:block;margin-bottom:8px">Vídeo ainda não carregado</strong>
+        Salve o arquivo com o nome <code style="color:var(--dourado)">video-carflip.mp4</code><br>
+        na mesma pasta deste index.html
+      </div>
     </div>
   </div>
 </section>
@@ -367,7 +385,9 @@ footer a{color:var(--branco);text-decoration:none}
 <section>
   <div class="wrap">
     <div class="cruz">
-      <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/promocaocarflip.png" alt="Promoção Cruzeiro CarFlip Express">
+      <div class="cruz-img">
+        <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/promocaocarflip.png" alt="Promoção Cruzeiro CarFlip Express" loading="lazy">
+      </div>
       <div class="cruz-txt">
         <div class="tagc">Promoção 2026</div>
         <h2>Vendeu com a gente?<br>Você concorre a um cruzeiro</h2>
@@ -455,6 +475,19 @@ footer a{color:var(--branco);text-decoration:none}
 </a>
 
 <script>
+// Se o video nao existir, mostra o aviso no lugar do player
+(function(){
+  var v = document.getElementById('videoCarflip');
+  var aviso = document.getElementById('videoAviso');
+  if(!v) return;
+  v.addEventListener('error', mostrarAviso, true);
+  v.querySelector('source').addEventListener('error', mostrarAviso);
+  function mostrarAviso(){
+    v.style.display = 'none';
+    aviso.style.display = 'block';
+  }
+})();
+
 // Evento de conversao no clique dos CTAs (Meta Pixel + GA4)
 document.querySelectorAll('a[href*="wa.me"]').forEach(function(el){
   el.addEventListener('click', function(){
