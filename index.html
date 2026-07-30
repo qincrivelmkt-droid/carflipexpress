@@ -165,21 +165,19 @@ header{
 
 /* CRUZEIRO */
 .cruz{
-  border:1px solid var(--dourado);border-radius:18px;overflow:hidden;background:var(--preto-2);
-  max-width:760px;margin:0 auto;
+  border:1px solid var(--dourado);border-radius:18px;background:var(--preto-2);
+  max-width:640px;margin:0 auto;padding:36px 28px;text-align:center;
 }
-.cruz-img{
-  width:100%;max-height:340px;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;background:var(--preto-3);
-}
+.cruz-img{margin:0 auto 24px;display:flex;justify-content:center}
 .cruz-img img{
-  width:100%;height:100%;max-height:340px;
-  object-fit:cover;object-position:center;display:block;
+  width:auto;height:auto;
+  max-width:260px;max-height:260px;
+  border-radius:12px;display:block;
 }
 @media(max-width:600px){
-  .cruz-img,.cruz-img img{max-height:220px}
+  .cruz-img img{max-width:200px;max-height:200px}
 }
-.cruz-txt{padding:32px 26px;text-align:center}
+.cruz-txt{text-align:center}
 .cruz-txt .tagc{
   display:inline-block;background:var(--dourado);color:var(--preto);
   padding:6px 16px;border-radius:100px;font-size:.78rem;font-weight:800;
@@ -262,9 +260,9 @@ footer a{color:var(--branco);text-decoration:none}
     </div>
 
     <div class="selos">
-      <div class="selo"><b>Minutos</b>para receber a proposta</div>
+      <div class="selo"><b>+15 mil</b>compradores na nossa rede</div>
+      <div class="selo"><b>Pix</b>na hora, direto na sua conta</div>
       <div class="selo"><b>4.9★</b>nota no Google</div>
-      <div class="selo"><b>100%</b>burocracia por nossa conta</div>
     </div>
   </div>
 </section>
@@ -313,29 +311,38 @@ footer a{color:var(--branco);text-decoration:none}
 <!-- SOLUCAO -->
 <section>
   <div class="wrap center">
-    <h2>Aqui você resolve em uma visita</h2>
-    <p class="lead">A CarFlip Express compra o seu carro. Você não anuncia, não espera, não negocia com estranho.</p>
+    <h2>Seu carro disputado por<br>mais de 15 mil compradores</h2>
+    <p class="lead" style="max-width:660px;margin:16px auto 0">A CarFlip não é uma loja que faz uma proposta e pronto. Nós temos uma rede de mais de 15 mil compradores cadastrados no Brasil inteiro. Seu carro entra nessa rede e a gente busca a melhor oferta que existir pra ele.</p>
 
     <div class="passos">
       <div class="passo">
         <div class="n">1</div>
-        <h3>Você chama no WhatsApp</h3>
-        <p>Manda os dados do carro e já sai com uma prévia de valor.</p>
+        <h3>Chame no WhatsApp</h3>
+        <p>Manda os dados do carro e já recebe uma prévia de valor, sem sair de casa.</p>
       </div>
       <div class="passo">
         <div class="n">2</div>
-        <h3>Avaliação e perícia na hora</h3>
-        <p>Equipe própria analisa o veículo na sua frente, com critério transparente.</p>
+        <h3>Avaliação com laudo cautelar</h3>
+        <p>Análise técnica de verdade, com cautelar, não é achismo nem tabela genérica.</p>
       </div>
       <div class="passo">
         <div class="n">3</div>
-        <h3>Proposta em minutos</h3>
-        <p>Você recebe a melhor proposta que conseguimos fazer, sem jogo.</p>
+        <h3>Ofertas do Brasil inteiro</h3>
+        <p>Levamos seu carro pra nossa rede nacional e buscamos a melhor proposta possível.</p>
       </div>
       <div class="passo">
         <div class="n">4</div>
-        <h3>Pagamento e documentação</h3>
-        <p>Fechou? A gente cuida de toda a burocracia até liberar o pagamento.</p>
+        <h3>Pix na hora</h3>
+        <p>Fechou negócio, o dinheiro cai na sua conta na hora. E a burocracia é por nossa conta.</p>
+      </div>
+    </div>
+
+    <div class="selos" style="margin-top:40px">
+      <div class="selo" style="min-width:200px">
+        <b style="color:var(--dourado)">Com dívida?</b>Compramos mesmo assim
+      </div>
+      <div class="selo" style="min-width:200px">
+        <b style="color:var(--dourado)">Doc atrasado?</b>Resolvemos junto com você
       </div>
     </div>
   </div>
@@ -348,11 +355,11 @@ footer a{color:var(--branco);text-decoration:none}
       <h2>O que muda pra você</h2>
     </div>
     <div class="bens">
-      <div class="ben"><h3>Você recupera seu tempo</h3><p>Nada de responder mensagem de curioso e marcar visita que não acontece.</p></div>
-      <div class="ben"><h3>Dinheiro rápido na conta</h3><p>Processo ágil pra quem precisa resolver agora, não daqui a três meses.</p></div>
-      <div class="ben"><h3>Zero risco de golpe</h3><p>Empresa com endereço fixo em Kobrasol, CNPJ e reputação pública no Google.</p></div>
-      <div class="ben"><h3>Você sabe quanto vale</h3><p>Perícia técnica mostra exatamente o que foi considerado na avaliação.</p></div>
-      <div class="ben"><h3>Burocracia não é problema seu</h3><p>Transferência e documentação ficam por nossa conta, do início ao fim.</p></div>
+      <div class="ben"><h3>Concorrência a seu favor</h3><p>Mais de 15 mil compradores disputando seu carro empurra o valor pra cima, não pra baixo.</p></div>
+      <div class="ben"><h3>Pix na hora, sem espera</h3><p>Fechou negócio, o dinheiro cai na sua conta no mesmo momento.</p></div>
+      <div class="ben"><h3>Dívida não trava a venda</h3><p>Carro financiado, com débitos ou documento atrasado? A gente compra e resolve junto.</p></div>
+      <div class="ben"><h3>Avaliação com laudo cautelar</h3><p>Você entende exatamente por que seu carro vale o que vale, com base técnica.</p></div>
+      <div class="ben"><h3>Zero risco de golpe</h3><p>Empresa com CNPJ, endereço fixo em Kobrasol e reputação pública no Google.</p></div>
       <div class="ben"><h3>Sem compromisso nenhum</h3><p>Não gostou da proposta? Você vai embora com o carro e sem pagar nada.</p></div>
     </div>
   </div>
@@ -420,11 +427,15 @@ footer a{color:var(--branco);text-decoration:none}
     <div class="faq">
       <details open>
         <summary>Vocês pagam menos que o mercado?</summary>
-        <p>A gente trabalha com proposta justa e transparente. Na perícia você acompanha tudo que foi considerado e entende exatamente como chegamos no valor. Se a proposta não te servir, você não tem obrigação nenhuma de aceitar.</p>
+        <p>É o contrário do que a maioria imagina. Como levamos seu carro pra uma rede de mais de 15 mil compradores no Brasil inteiro, existe disputa pelo veículo. Isso empurra o valor pra cima. E a avaliação é feita com laudo cautelar, então você enxerga exatamente como chegamos no número.</p>
       </details>
       <details>
-        <summary>Meu carro ainda tem financiamento em aberto</summary>
-        <p>Sem problema, isso é rotina aqui. A gente avalia normalmente e cuida da parte de quitação junto ao banco dentro do processo.</p>
+        <summary>Meu carro tem dívida ou financiamento em aberto</summary>
+        <p>Compramos assim mesmo. Carro financiado, com débitos ou multas é rotina aqui. A gente avalia normalmente e cuida da quitação dentro do processo.</p>
+      </details>
+      <details>
+        <summary>Estou com a documentação atrasada</summary>
+        <p>Também não é impedimento. Compramos carro com documento atrasado e resolvemos a regularização junto com você.</p>
       </details>
       <details>
         <summary>Preciso levar o carro até vocês?</summary>
