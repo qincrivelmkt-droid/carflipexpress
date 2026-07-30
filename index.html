@@ -3,373 +3,496 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CarFlip Express | Vendemos seu carro em minutos, com pagamento à vista</title>
-<meta name="description" content="Avaliação e perícia na hora, proposta em minutos e pagamento ágil. A CarFlip Express compra seu carro em São José/SC sem enrolação.">
-
-<!-- OpenGraph -->
-<meta property="og:title" content="Venda seu carro hoje | CarFlip Express">
-<meta property="og:description" content="Avaliação na hora, proposta em minutos, pagamento ágil. 4.9 no Google.">
+<title>CarFlip Express | Venda seu carro com Pix na hora</title>
+<meta name="description" content="Mais de 15 mil compradores disputando seu carro. Avaliação com laudo cautelar, ofertas do Brasil inteiro e Pix na hora. São José/SC.">
+<meta property="og:title" content="Venda seu carro com Pix na hora | CarFlip Express">
+<meta property="og:description" content="+15 mil compradores na nossa rede. Laudo cautelar, melhor oferta e dinheiro na hora.">
 <meta property="og:image" content="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/LOGOCARFLIP.jpg">
-<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --preto:#000000;
-  --preto-2:#0a0a0a;
-  --preto-3:#141414;
+  --bg:#050505;
+  --card:#0d0d0d;
+  --card-2:#131313;
+  --borda:#1e1e1e;
   --branco:#ffffff;
-  --cinza:#a1a1a1;
-  --cinza-borda:#2a2a2a;
+  --texto:#b8b8b8;
+  --texto-2:#7a7a7a;
   --zap:#25D366;
-  --dourado:#e8c547;
+  --glow:rgba(255,255,255,.55);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  background:var(--preto);
-  color:var(--branco);
-  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  background:var(--bg);color:var(--branco);
+  font-family:'Sora',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
-.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
-section{padding:64px 0}
-h1,h2,h3{line-height:1.15;letter-spacing:-0.02em;font-weight:800}
-h1{font-size:clamp(2rem,7vw,3.6rem)}
-h2{font-size:clamp(1.6rem,5vw,2.6rem);margin-bottom:14px}
-h3{font-size:1.15rem;font-weight:700}
-p{color:#e4e4e4}
-.lead{font-size:clamp(1rem,3.4vw,1.2rem);color:var(--cinza)}
+/* GRID DE FUNDO */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:70px 70px;
+  mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 30%,transparent 75%);
+}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 22px;position:relative;z-index:2}
+section{padding:88px 0;position:relative;z-index:2}
+h1,h2,h3{line-height:1.08;letter-spacing:-.035em;font-weight:800}
+h1{font-size:clamp(2.2rem,6.4vw,4.1rem)}
+h2{font-size:clamp(1.8rem,4.6vw,3rem)}
+h3{font-size:1.08rem;font-weight:700;letter-spacing:-.02em}
+.dim{color:var(--texto-2);font-weight:300}
+p{color:var(--texto);font-size:.98rem}
+.lead{font-size:clamp(.98rem,2.4vw,1.12rem);color:var(--texto);font-weight:300}
+.eyebrow{
+  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--texto-2);font-weight:600;margin-bottom:18px;display:block;
+}
 .center{text-align:center}
-.mt8{margin-top:8px}.mt16{margin-top:16px}.mt24{margin-top:24px}.mt32{margin-top:32px}.mt40{margin-top:40px}
+
+/* ANIMACAO REVEAL */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
 
 /* HEADER */
 header{
   position:sticky;top:0;z-index:900;
-  background:rgba(0,0,0,.88);backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--cinza-borda);
+  background:rgba(5,5,5,.82);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--borda);
 }
-.hd{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1120px;margin:0 auto}
-.hd img{height:64px;width:auto;border-radius:8px}
-@media(max-width:480px){.hd img{height:52px}}
+.hd{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1180px;margin:0 auto}
+.hd img{height:56px;width:auto;border-radius:8px}
+.hd-nav{display:flex;gap:30px;align-items:center}
+.hd-nav a{color:var(--texto);text-decoration:none;font-size:.88rem;font-weight:400;transition:color .2s}
+.hd-nav a:hover{color:var(--branco)}
 .hd-cta{
-  background:var(--branco);color:var(--preto);
-  padding:10px 18px;border-radius:100px;
+  background:var(--branco);color:#000;padding:11px 24px;border-radius:100px;
   font-weight:700;font-size:.85rem;text-decoration:none;white-space:nowrap;
+  box-shadow:0 0 22px rgba(255,255,255,.22);transition:box-shadow .25s,transform .2s;
 }
+.hd-cta:hover{box-shadow:0 0 34px rgba(255,255,255,.42);transform:translateY(-1px)}
+@media(max-width:860px){.hd-nav{display:none}}
+@media(max-width:480px){.hd img{height:46px}.hd-cta{padding:10px 18px;font-size:.78rem}}
 
 /* HERO */
-.hero{
-  padding:56px 0 48px;
-  background:
-    radial-gradient(900px 400px at 50% -10%, rgba(255,255,255,.10), transparent 70%),
-    var(--preto);
-  border-bottom:1px solid var(--cinza-borda);
-}
-.tag{
-  display:inline-flex;align-items:center;gap:8px;
-  border:1px solid var(--cinza-borda);border-radius:100px;
-  padding:7px 16px;font-size:.8rem;color:var(--cinza);
-  margin-bottom:22px;
-}
-.tag b{color:var(--branco)}
-.hero h1 span{
-  background:linear-gradient(180deg,#fff 0%,#8a8a8a 100%);
+.hero{padding:70px 0 80px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:44px}.hero{padding:48px 0 60px}}
+
+.hero h1 .hl{
+  background:linear-gradient(180deg,#fff 0%,#fff 55%,#9a9a9a 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.hero .lead{max-width:660px;margin:18px auto 0}
+.hero .lead{margin-top:22px;max-width:480px}
+@media(max-width:900px){.hero .lead{margin-left:auto;margin-right:auto}}
 
-/* BOTOES */
+/* AVATARES + CONTADOR */
+.social-row{display:flex;align-items:center;gap:16px;margin-top:30px}
+@media(max-width:900px){.social-row{justify-content:center}}
+.avs{display:flex}
+.avs span{
+  width:38px;height:38px;border-radius:50%;border:2px solid var(--bg);
+  margin-left:-11px;background:linear-gradient(135deg,#2a2a2a,#111);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.72rem;font-weight:700;color:var(--texto);
+}
+.avs span:first-child{margin-left:0}
+.social-row .num{font-size:1.5rem;font-weight:800;line-height:1;letter-spacing:-.03em}
+.social-row .lbl{font-size:.76rem;color:var(--texto-2);margin-top:3px}
+
+/* CTA */
 .btn{
-  display:inline-block;background:var(--branco);color:var(--preto);
-  padding:18px 36px;border-radius:100px;font-weight:800;font-size:1.02rem;
-  text-decoration:none;transition:transform .15s ease,box-shadow .15s ease;
-  box-shadow:0 8px 30px rgba(255,255,255,.14);
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--branco);color:#000;padding:17px 34px;border-radius:100px;
+  font-weight:700;font-size:1rem;text-decoration:none;
+  box-shadow:0 0 30px rgba(255,255,255,.22);
+  transition:transform .22s,box-shadow .28s;
 }
-.btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,255,255,.24)}
-.btn-zap{background:var(--zap);color:#fff;box-shadow:0 8px 30px rgba(37,211,102,.28)}
-.btn-zap:hover{box-shadow:0 12px 40px rgba(37,211,102,.4)}
-.micro{font-size:.82rem;color:var(--cinza);margin-top:14px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 48px rgba(255,255,255,.45)}
+.btn.ghost{background:transparent;color:var(--branco);border:1px solid var(--borda);box-shadow:none}
+.btn.ghost:hover{border-color:#3a3a3a;background:rgba(255,255,255,.04)}
+.btn svg{width:16px;height:16px;fill:currentColor}
+.micro{font-size:.8rem;color:var(--texto-2);margin-top:15px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+@media(max-width:900px){.cta-row{justify-content:center}}
 
-/* SELOS */
-.selos{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:34px}
-.selo{
-  border:1px solid var(--cinza-borda);border-radius:10px;
-  padding:12px 18px;font-size:.85rem;color:#ddd;background:var(--preto-2);
+/* IMAGEM HERO COM GLOW */
+.hero-img{position:relative;display:flex;justify-content:center;align-items:center}
+.hero-img::before{
+  content:"";position:absolute;width:118%;height:118%;
+  background:radial-gradient(circle,rgba(255,255,255,.15) 0%,transparent 62%);
+  filter:blur(48px);z-index:0;
 }
-.selo b{display:block;color:var(--branco);font-size:1.25rem;font-weight:800}
+.hero-img .frame{
+  position:relative;z-index:2;border-radius:22px;overflow:hidden;
+  border:1px solid var(--borda);box-shadow:0 30px 90px rgba(0,0,0,.85);
+  animation:float 6.5s ease-in-out infinite;
+}
+.hero-img .frame img{width:100%;display:block;max-width:500px}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+/* CARDS FLUTUANTES */
+.fcard{
+  position:absolute;z-index:5;background:rgba(13,13,13,.94);
+  border:1px solid var(--borda);border-radius:14px;padding:13px 17px;
+  backdrop-filter:blur(10px);box-shadow:0 14px 40px rgba(0,0,0,.7);
+}
+.fcard .t{font-size:.68rem;color:var(--texto-2);margin-bottom:3px}
+.fcard .v{font-size:1rem;font-weight:800;letter-spacing:-.02em}
+.fcard.a{top:9%;left:-4%;animation:float 5.2s ease-in-out infinite}
+.fcard.b{bottom:12%;right:-4%;animation:float 6.8s ease-in-out infinite .8s}
+@media(max-width:520px){
+  .fcard.a{left:0;top:4%}.fcard.b{right:0;bottom:6%}
+  .fcard{padding:10px 13px}.fcard .v{font-size:.86rem}
+}
+
+/* TICKER */
+.ticker{
+  border-top:1px solid var(--borda);border-bottom:1px solid var(--borda);
+  padding:16px 0;overflow:hidden;white-space:nowrap;background:var(--card);
+}
+.ticker-in{display:inline-flex;gap:56px;animation:slide 26s linear infinite}
+.ticker-in span{
+  font-size:.82rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--texto-2);font-weight:600;display:inline-flex;align-items:center;gap:12px;
+}
+.ticker-in span::after{content:"";width:5px;height:5px;border-radius:50%;background:#333}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* CARDS NUMERADOS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+@media(max-width:980px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+.step{
+  background:var(--card);border:1px solid var(--borda);border-radius:18px;
+  padding:30px 24px;transition:transform .3s,border-color .3s,background .3s;
+}
+.step:hover{transform:translateY(-6px);border-color:#3a3a3a;background:var(--card-2)}
+.step .n{font-size:.82rem;font-weight:800;color:var(--texto-2);margin-bottom:20px;letter-spacing:.06em}
+.step h3{margin-bottom:9px}
+.step p{font-size:.88rem;color:var(--texto-2)}
+/* card destacado (era o verde da referencia) */
+.step.hi{background:var(--branco);border-color:var(--branco);box-shadow:0 0 50px rgba(255,255,255,.16)}
+.step.hi .n{color:#666}
+.step.hi h3{color:#000}
+.step.hi p{color:#3a3a3a}
+
+/* SPLIT */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:40px}}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+@media(max-width:640px){.stats{grid-template-columns:1fr}}
+.stat{
+  background:var(--card);border:1px solid var(--borda);border-radius:16px;
+  padding:26px 22px;text-align:center;transition:transform .3s,border-color .3s;
+}
+.stat:hover{transform:translateY(-5px);border-color:#3a3a3a}
+.stat b{display:block;font-size:2.1rem;font-weight:800;letter-spacing:-.04em;line-height:1;margin-bottom:8px}
+.stat span{font-size:.82rem;color:var(--texto-2)}
 
 /* VIDEO */
-.video-box{
-  border:1px solid var(--cinza-borda);border-radius:16px;overflow:hidden;
-  background:var(--preto-2);
-  max-width:520px;margin:0 auto;
-  display:flex;align-items:center;justify-content:center;text-align:center;
+.vbox{
+  max-width:560px;margin:44px auto 0;border-radius:20px;overflow:hidden;
+  border:1px solid var(--borda);background:var(--card);
+  box-shadow:0 30px 90px rgba(0,0,0,.75);position:relative;
 }
-.video-box video{
-  width:100%;height:auto;max-height:520px;
-  object-fit:contain;display:block;background:#000;
+.vbox::before{
+  content:"";position:absolute;inset:-40px;z-index:-1;
+  background:radial-gradient(circle,rgba(255,255,255,.11),transparent 65%);filter:blur(40px);
 }
-@media(max-width:600px){
-  .video-box{max-width:100%}
-  .video-box video{max-height:420px}
-}
-.video-ph{color:var(--cinza);font-size:.9rem}
+.vbox video{width:100%;height:auto;max-height:560px;display:block;background:#000}
+.vph{padding:56px 26px;text-align:center;color:var(--texto-2);font-size:.9rem}
 
 /* DOR */
-.dor{background:var(--preto-2);border-top:1px solid var(--cinza-borda);border-bottom:1px solid var(--cinza-borda)}
-.dor ul{list-style:none;max-width:640px;margin:26px auto 0}
-.dor li{
-  padding:16px 0 16px 34px;position:relative;
-  border-bottom:1px solid var(--cinza-borda);color:#ddd;font-size:1rem;
+.pains{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:44px;max-width:840px;margin-left:auto;margin-right:auto}
+@media(max-width:640px){.pains{grid-template-columns:1fr}}
+.pain{
+  background:var(--card);border:1px solid var(--borda);border-radius:13px;
+  padding:19px 22px;display:flex;gap:14px;align-items:flex-start;
+  font-size:.92rem;color:var(--texto);text-align:left;transition:border-color .3s,transform .3s;
 }
-.dor li:last-child{border-bottom:none}
-.dor li::before{content:"✕";position:absolute;left:6px;top:16px;color:#666;font-weight:700}
-
-/* PASSOS */
-.passos{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:36px}
-.passo{
-  border:1px solid var(--cinza-borda);border-radius:14px;padding:26px 22px;background:var(--preto-2);
-}
-.passo .n{
-  width:38px;height:38px;border-radius:50%;background:var(--branco);color:var(--preto);
-  display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:16px;
-}
-.passo p{color:var(--cinza);font-size:.92rem;margin-top:8px}
+.pain:hover{border-color:#3a3a3a;transform:translateX(4px)}
+.pain i{color:#4a4a4a;font-style:normal;font-weight:700;flex-shrink:0}
 
 /* BENEFICIOS */
-.bens{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;margin-top:36px}
+.bens{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+@media(max-width:900px){.bens{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.bens{grid-template-columns:1fr}}
 .ben{
-  border:1px solid var(--cinza-borda);border-radius:14px;padding:24px;background:var(--preto-2);
+  background:var(--card);border:1px solid var(--borda);border-radius:18px;padding:28px 24px;
+  transition:transform .3s,border-color .3s,background .3s;position:relative;overflow:hidden;
 }
-.ben h3{margin-bottom:8px}
-.ben p{color:var(--cinza);font-size:.92rem}
+.ben::after{
+  content:"";position:absolute;top:0;left:0;width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+  transform:translateX(-100%);transition:transform .6s;
+}
+.ben:hover::after{transform:translateX(100%)}
+.ben:hover{transform:translateY(-6px);border-color:#3a3a3a;background:var(--card-2)}
+.ben .ic{
+  width:42px;height:42px;border-radius:11px;background:var(--card-2);border:1px solid var(--borda);
+  display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1.1rem;
+}
+.ben h3{margin-bottom:9px}
+.ben p{font-size:.88rem;color:var(--texto-2)}
 
 /* PROVA */
-.prova{background:var(--preto-2);border-top:1px solid var(--cinza-borda);border-bottom:1px solid var(--cinza-borda)}
 .nota{
-  display:inline-flex;align-items:center;gap:14px;
-  border:1px solid var(--cinza-borda);border-radius:14px;padding:18px 28px;background:var(--preto-3);
+  display:inline-flex;align-items:center;gap:18px;
+  background:var(--card);border:1px solid var(--borda);border-radius:18px;padding:22px 34px;
 }
-.nota .n{font-size:2.6rem;font-weight:800;line-height:1}
-.nota .s{color:var(--dourado);font-size:1.05rem;letter-spacing:2px}
-.nota .t{color:var(--cinza);font-size:.85rem}
-.deps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:34px}
+.nota .n{font-size:3rem;font-weight:800;line-height:1;letter-spacing:-.05em}
+.nota .s{font-size:1rem;letter-spacing:3px}
+.nota .t{color:var(--texto-2);font-size:.82rem;margin-top:4px}
+.deps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+@media(max-width:900px){.deps{grid-template-columns:1fr}}
 .dep{
-  border:1px solid var(--cinza-borda);border-radius:14px;padding:24px;background:var(--preto-3);text-align:left;
+  background:var(--card);border:1px solid var(--borda);border-radius:18px;
+  padding:28px 24px;text-align:left;transition:transform .3s,border-color .3s;
 }
-.dep .stars{color:var(--dourado);font-size:.9rem;letter-spacing:2px;margin-bottom:12px}
-.dep p{font-size:.95rem;color:#ddd}
-.dep .aut{margin-top:14px;font-size:.85rem;color:var(--cinza);font-weight:600}
+.dep:hover{transform:translateY(-5px);border-color:#3a3a3a}
+.dep .stars{font-size:.88rem;letter-spacing:2px;margin-bottom:14px}
+.dep p{font-size:.92rem;color:var(--texto)}
+.dep .aut{margin-top:16px;font-size:.82rem;color:var(--texto-2);font-weight:600}
 
 /* CRUZEIRO */
 .cruz{
-  border:1px solid var(--dourado);border-radius:18px;background:var(--preto-2);
-  max-width:640px;margin:0 auto;padding:36px 28px;text-align:center;
+  background:var(--card);border:1px solid var(--borda);border-radius:24px;
+  max-width:920px;margin:0 auto;padding:48px 36px;
+  display:grid;grid-template-columns:230px 1fr;gap:40px;align-items:center;
+  position:relative;overflow:hidden;
 }
-.cruz-img{margin:0 auto 24px;display:flex;justify-content:center}
+.cruz::before{
+  content:"";position:absolute;top:-90px;right:-90px;width:280px;height:280px;
+  background:radial-gradient(circle,rgba(255,255,255,.09),transparent 68%);filter:blur(46px);
+}
+@media(max-width:760px){.cruz{grid-template-columns:1fr;text-align:center;padding:36px 24px;gap:28px}}
 .cruz-img img{
-  width:auto;height:auto;
-  max-width:260px;max-height:260px;
-  border-radius:12px;display:block;
+  width:auto;height:auto;max-width:230px;max-height:230px;
+  border-radius:16px;display:block;margin:0 auto;
+  border:1px solid var(--borda);
 }
-@media(max-width:600px){
-  .cruz-img img{max-width:200px;max-height:200px}
+.cruz .tagc{
+  display:inline-block;border:1px solid var(--borda);background:var(--card-2);
+  padding:6px 15px;border-radius:100px;font-size:.7rem;font-weight:700;
+  letter-spacing:.14em;margin-bottom:16px;text-transform:uppercase;color:var(--texto);
 }
-.cruz-txt{text-align:center}
-.cruz-txt .tagc{
-  display:inline-block;background:var(--dourado);color:var(--preto);
-  padding:6px 16px;border-radius:100px;font-size:.78rem;font-weight:800;
-  letter-spacing:.5px;margin-bottom:16px;text-transform:uppercase;
-}
-.cruz-txt p{color:var(--cinza);max-width:520px;margin:12px auto 0}
+.cruz h2{font-size:clamp(1.5rem,3.6vw,2.2rem);margin-bottom:12px}
+.cruz p{margin-bottom:24px}
 
-/* OBJECOES / FAQ */
-.faq{max-width:760px;margin:32px auto 0}
+/* FAQ */
+.faq{max-width:780px;margin:44px auto 0}
 details{
-  border:1px solid var(--cinza-borda);border-radius:12px;
-  background:var(--preto-2);margin-bottom:10px;overflow:hidden;
+  border:1px solid var(--borda);border-radius:14px;background:var(--card);
+  margin-bottom:11px;overflow:hidden;transition:border-color .3s;
 }
+details:hover{border-color:#3a3a3a}
+details[open]{background:var(--card-2)}
 summary{
-  padding:20px 22px;cursor:pointer;font-weight:700;font-size:1rem;
-  list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;
+  padding:21px 24px;cursor:pointer;font-weight:600;font-size:.98rem;
+  list-style:none;display:flex;justify-content:space-between;gap:18px;align-items:center;
 }
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-size:1.4rem;color:var(--cinza);font-weight:400}
+summary::after{content:"+";font-size:1.5rem;color:var(--texto-2);font-weight:300;transition:transform .3s}
 details[open] summary::after{content:"−"}
-details p{padding:0 22px 22px;color:var(--cinza);font-size:.95rem}
+details p{padding:0 24px 24px;color:var(--texto-2);font-size:.92rem}
 
 /* CTA FINAL */
-.final{
-  background:linear-gradient(180deg,var(--preto-2) 0%,var(--preto) 100%);
-  border-top:1px solid var(--cinza-borda);text-align:center;
+.final{text-align:center;position:relative;overflow:hidden}
+.final::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:660px;height:340px;background:radial-gradient(ellipse,rgba(255,255,255,.13),transparent 68%);
+  filter:blur(58px);
 }
+.final h2{position:relative}
 
 /* FOOTER */
-footer{
-  background:var(--preto);border-top:1px solid var(--cinza-borda);
-  padding:44px 0 110px;text-align:center;
-}
-footer img{height:52px;border-radius:8px;margin-bottom:20px}
-footer p{color:var(--cinza);font-size:.88rem;margin-bottom:6px}
+footer{border-top:1px solid var(--borda);padding:48px 0 120px;text-align:center}
+footer img{height:60px;border-radius:10px;margin-bottom:22px}
+footer p{color:var(--texto-2);font-size:.86rem;margin-bottom:6px}
 footer a{color:var(--branco);text-decoration:none}
+footer a:hover{opacity:.75}
 
-/* WHATSAPP FLUTUANTE */
+/* WHATSAPP */
 .zap-float{
-  position:fixed;right:18px;bottom:18px;z-index:999;
-  display:flex;align-items:center;gap:10px;
-  background:var(--zap);color:#fff;text-decoration:none;
-  padding:14px 22px;border-radius:100px;font-weight:800;font-size:.95rem;
-  box-shadow:0 8px 28px rgba(37,211,102,.45);
-  animation:pulse 2.4s infinite;
+  position:fixed;right:20px;bottom:20px;z-index:999;
+  display:flex;align-items:center;gap:10px;background:var(--zap);color:#fff;
+  text-decoration:none;padding:15px 24px;border-radius:100px;font-weight:700;font-size:.94rem;
+  box-shadow:0 10px 34px rgba(37,211,102,.45);animation:pz 2.6s infinite;
 }
-@keyframes pulse{
-  0%,100%{box-shadow:0 8px 28px rgba(37,211,102,.45)}
-  50%{box-shadow:0 8px 40px rgba(37,211,102,.75)}
-}
-.zap-float svg{width:22px;height:22px;fill:#fff;flex-shrink:0}
-@media(max-width:480px){
-  .zap-float span{display:none}
-  .zap-float{padding:16px;border-radius:50%}
-  section{padding:48px 0}
-  .hd-cta{display:none}
-}
+@keyframes pz{0%,100%{box-shadow:0 10px 34px rgba(37,211,102,.45)}50%{box-shadow:0 10px 48px rgba(37,211,102,.85)}}
+.zap-float svg{width:23px;height:23px;fill:#fff;flex-shrink:0}
+@media(max-width:520px){.zap-float span{display:none}.zap-float{padding:17px;border-radius:50%}}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="hd">
     <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/LOGOCARFLIP.jpg" alt="CarFlip Express">
-    <a href="https://wa.me/5548984590562?text=Ol%C3%A1!%20Quero%20avaliar%20meu%20carro%20na%20CarFlip%20Express." class="hd-cta" id="cta-header">Avaliar meu carro</a>
+    <nav class="hd-nav">
+      <a href="#como">Como funciona</a>
+      <a href="#vantagens">Vantagens</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+    <a href="https://wa.me/5548984590562?text=Ol%C3%A1!%20Quero%20avaliar%20meu%20carro%20na%20CarFlip%20Express." class="hd-cta" id="cta-header">Avaliar agora</a>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap center">
-    <div class="tag">⭐ <b>4.9</b> no Google · 48 avaliações</div>
-    <h1>Venda seu carro <span>hoje</span>,<br>sem anúncio e sem enrolação</h1>
-    <p class="lead">Avaliação e perícia na hora. Proposta em poucos minutos. A gente cuida da negociação inteira até o dinheiro cair na sua conta.</p>
+  <div class="wrap">
+    <div class="hero-grid">
 
-    <div class="mt32">
-      <a href="https://wa.me/5548984590562?text=Ol%C3%A1!%20Quero%20avaliar%20meu%20carro%20na%20CarFlip%20Express." class="btn btn-zap" id="cta-hero">Quero avaliar meu carro</a>
-      <p class="micro">Avaliação gratuita · Sem compromisso · Resposta na hora</p>
+      <div class="rv on">
+        <span class="eyebrow">Venda rápida e segura · São José/SC</span>
+        <h1>
+          <span class="hl">Seu carro vendido</span><br>
+          <span class="dim">com</span> <span class="hl">Pix na hora.</span>
+        </h1>
+        <p class="lead">Mais de 15 mil compradores no Brasil inteiro disputando seu veículo. Avaliação com laudo cautelar e a melhor oferta que existir pra ele.</p>
+
+        <div class="social-row">
+          <div class="avs">
+            <span>★</span><span>★</span><span>★</span><span>4.9</span>
+          </div>
+          <div>
+            <div class="num" data-count="15000" data-suffix="+">0</div>
+            <div class="lbl">compradores na nossa rede</div>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a href="https://wa.me/5548984590562?text=Ol%C3%A1!%20Quero%20avaliar%20meu%20carro%20na%20CarFlip%20Express." class="btn" id="cta-hero">
+            Avaliar meu carro
+            <svg viewBox="0 0 24 24"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
+          </a>
+          <a href="#como" class="btn ghost">Como funciona</a>
+        </div>
+        <p class="micro">Avaliação gratuita · Sem compromisso · Resposta na hora</p>
+      </div>
+
+      <div class="hero-img rv d2">
+        <div class="fcard a">
+          <div class="t">Pagamento</div>
+          <div class="v">Pix na hora</div>
+        </div>
+        <div class="frame">
+          <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/SnapInsta.to_752822777_122119434536817148_4468455237677374768_n.jpg" alt="Carro avaliado pela CarFlip Express">
+        </div>
+        <div class="fcard b">
+          <div class="t">Avaliação</div>
+          <div class="v">Com laudo cautelar</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-in">
+    <span>Compramos com dívida</span><span>Documento atrasado</span><span>Pix na hora</span>
+    <span>Laudo cautelar</span><span>Ofertas do Brasil inteiro</span><span>Sem compromisso</span>
+    <span>Compramos com dívida</span><span>Documento atrasado</span><span>Pix na hora</span>
+    <span>Laudo cautelar</span><span>Ofertas do Brasil inteiro</span><span>Sem compromisso</span>
+  </div>
+</div>
+
+<!-- COMO FUNCIONA -->
+<section id="como">
+  <div class="wrap">
+    <div class="split">
+      <div class="rv">
+        <span class="eyebrow">O mecanismo</span>
+        <h2><span class="dim">Seu carro</span> disputado<br>por <span class="hl">15 mil compradores.</span></h2>
+      </div>
+      <div class="rv d1">
+        <p class="lead">A CarFlip não é uma loja que faz uma proposta e pronto. Seu veículo entra numa rede nacional de compradores e a gente busca a melhor oferta que existir. Concorrência empurra o valor pra cima, não pra baixo.</p>
+      </div>
     </div>
 
-    <div class="selos">
-      <div class="selo"><b>+15 mil</b>compradores na nossa rede</div>
-      <div class="selo"><b>Pix</b>na hora, direto na sua conta</div>
-      <div class="selo"><b>4.9★</b>nota no Google</div>
+    <div class="steps">
+      <div class="step rv"><div class="n">01.</div><h3>Chame no WhatsApp</h3><p>Manda os dados do carro e recebe uma prévia sem sair de casa.</p></div>
+      <div class="step rv d1"><div class="n">02.</div><h3>Laudo cautelar</h3><p>Análise técnica de verdade. Nada de achismo ou tabela genérica.</p></div>
+      <div class="step hi rv d2"><div class="n">03.</div><h3>Ofertas do Brasil</h3><p>Levamos seu carro pra rede nacional e buscamos a melhor proposta.</p></div>
+      <div class="step rv d3"><div class="n">04.</div><h3>Pix na hora</h3><p>Fechou, o dinheiro cai na conta. Burocracia por nossa conta.</p></div>
     </div>
   </div>
 </section>
 
 <!-- VIDEO -->
 <section>
-  <div class="wrap">
-    <div class="center">
-      <h2>Veja como funciona por dentro</h2>
-      <p class="lead">Atendimento, avaliação e perícia do seu carro, do jeito que acontece de verdade.</p>
-    </div>
-    <div class="video-box mt32" id="videoBox">
-      <!-- COLOQUE o arquivo "video-carflip.mp4" nesta mesma pasta -->
+  <div class="wrap center">
+    <span class="eyebrow rv">Por dentro</span>
+    <h2 class="rv"><span class="dim">Veja como é</span> o atendimento.</h2>
+    <div class="vbox rv d1" id="videoBox">
       <video id="videoCarflip" controls playsinline preload="metadata"
              poster="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/atendimento.jpeg">
-        <!-- 1) arquivo local, se existir na pasta -->
         <source src="carflip-express.mp4" type="video/mp4">
-        <!-- 2) fallback: arquivo hospedado no GitHub -->
         <source src="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/carflip-express.mp4" type="video/mp4">
       </video>
-      <div class="video-ph" id="videoAviso" style="display:none;padding:40px 24px">
-        <strong style="color:#fff;display:block;margin-bottom:8px">Vídeo ainda não carregado</strong>
-        Salve o arquivo com o nome <code style="color:var(--dourado)">video-carflip.mp4</code><br>
-        nesta mesma pasta (carflip-lp)
+      <div class="vph" id="videoAviso" style="display:none">
+        <strong style="color:#fff;display:block;margin-bottom:8px">Vídeo não encontrado</strong>
+        Salve como <code style="color:#fff">carflip-express.mp4</code> nesta pasta
       </div>
     </div>
   </div>
 </section>
 
 <!-- DOR -->
-<section class="dor">
-  <div class="wrap center">
-    <h2>Vender carro particular<br>é um desgaste</h2>
-    <p class="lead">Se você já tentou, sabe exatamente como é.</p>
-    <ul>
-      <li>Anúncio parado há semanas e ninguém sério aparece</li>
-      <li>Curioso marcando visita e não indo</li>
-      <li>Gente querendo arrancar milhares de reais do valor</li>
-      <li>Medo de golpe, cheque sem fundo e transferência falsa</li>
-      <li>Não saber quanto o seu carro realmente vale hoje</li>
-      <li>Precisar do dinheiro agora e depender de quem tem pressa nenhuma</li>
-    </ul>
-  </div>
-</section>
-
-<!-- SOLUCAO -->
 <section>
   <div class="wrap center">
-    <h2>Seu carro disputado por<br>mais de 15 mil compradores</h2>
-    <p class="lead" style="max-width:660px;margin:16px auto 0">A CarFlip não é uma loja que faz uma proposta e pronto. Nós temos uma rede de mais de 15 mil compradores cadastrados no Brasil inteiro. Seu carro entra nessa rede e a gente busca a melhor oferta que existir pra ele.</p>
-
-    <div class="passos">
-      <div class="passo">
-        <div class="n">1</div>
-        <h3>Chame no WhatsApp</h3>
-        <p>Manda os dados do carro e já recebe uma prévia de valor, sem sair de casa.</p>
-      </div>
-      <div class="passo">
-        <div class="n">2</div>
-        <h3>Avaliação com laudo cautelar</h3>
-        <p>Análise técnica de verdade, com cautelar, não é achismo nem tabela genérica.</p>
-      </div>
-      <div class="passo">
-        <div class="n">3</div>
-        <h3>Ofertas do Brasil inteiro</h3>
-        <p>Levamos seu carro pra nossa rede nacional e buscamos a melhor proposta possível.</p>
-      </div>
-      <div class="passo">
-        <div class="n">4</div>
-        <h3>Pix na hora</h3>
-        <p>Fechou negócio, o dinheiro cai na sua conta na hora. E a burocracia é por nossa conta.</p>
-      </div>
-    </div>
-
-    <div class="selos" style="margin-top:40px">
-      <div class="selo" style="min-width:200px">
-        <b style="color:var(--dourado)">Com dívida?</b>Compramos mesmo assim
-      </div>
-      <div class="selo" style="min-width:200px">
-        <b style="color:var(--dourado)">Doc atrasado?</b>Resolvemos junto com você
-      </div>
+    <span class="eyebrow rv">O problema</span>
+    <h2 class="rv"><span class="dim">Vender particular</span><br>é um desgaste.</h2>
+    <div class="pains">
+      <div class="pain rv"><i>01</i>Anúncio parado há semanas sem ninguém sério</div>
+      <div class="pain rv d1"><i>02</i>Curioso marcando visita e não aparecendo</div>
+      <div class="pain rv"><i>03</i>Gente querendo arrancar milhares do valor</div>
+      <div class="pain rv d1"><i>04</i>Medo de golpe e transferência falsa</div>
+      <div class="pain rv"><i>05</i>Não saber quanto seu carro realmente vale</div>
+      <div class="pain rv d1"><i>06</i>Precisar do dinheiro agora e depender dos outros</div>
     </div>
   </div>
 </section>
 
-<!-- BENEFICIOS -->
-<section class="dor">
+<!-- VANTAGENS -->
+<section id="vantagens">
   <div class="wrap">
     <div class="center">
-      <h2>O que muda pra você</h2>
+      <span class="eyebrow rv">Vantagens</span>
+      <h2 class="rv"><span class="dim">O que muda</span> pra você.</h2>
     </div>
     <div class="bens">
-      <div class="ben"><h3>Concorrência a seu favor</h3><p>Mais de 15 mil compradores disputando seu carro empurra o valor pra cima, não pra baixo.</p></div>
-      <div class="ben"><h3>Pix na hora, sem espera</h3><p>Fechou negócio, o dinheiro cai na sua conta no mesmo momento.</p></div>
-      <div class="ben"><h3>Dívida não trava a venda</h3><p>Carro financiado, com débitos ou documento atrasado? A gente compra e resolve junto.</p></div>
-      <div class="ben"><h3>Avaliação com laudo cautelar</h3><p>Você entende exatamente por que seu carro vale o que vale, com base técnica.</p></div>
-      <div class="ben"><h3>Zero risco de golpe</h3><p>Empresa com CNPJ, endereço fixo em Kobrasol e reputação pública no Google.</p></div>
-      <div class="ben"><h3>Sem compromisso nenhum</h3><p>Não gostou da proposta? Você vai embora com o carro e sem pagar nada.</p></div>
+      <div class="ben rv"><div class="ic">🏁</div><h3>Concorrência a seu favor</h3><p>15 mil compradores disputando seu carro empurra o valor pra cima.</p></div>
+      <div class="ben rv d1"><div class="ic">⚡</div><h3>Pix na hora</h3><p>Fechou negócio, o dinheiro cai na sua conta no mesmo momento.</p></div>
+      <div class="ben rv d2"><div class="ic">🔓</div><h3>Dívida não trava</h3><p>Financiado, com débitos ou documento atrasado. A gente compra e resolve.</p></div>
+      <div class="ben rv"><div class="ic">📋</div><h3>Laudo cautelar</h3><p>Você entende exatamente por que seu carro vale o que vale.</p></div>
+      <div class="ben rv d1"><div class="ic">🛡️</div><h3>Zero risco de golpe</h3><p>CNPJ, endereço fixo em Kobrasol e reputação pública no Google.</p></div>
+      <div class="ben rv d2"><div class="ic">🤝</div><h3>Sem compromisso</h3><p>Não gostou da proposta? Vai embora com o carro e sem pagar nada.</p></div>
     </div>
   </div>
 </section>
 
-<!-- PROVA SOCIAL -->
-<section class="prova">
+<!-- PROVA -->
+<section id="avaliacoes">
   <div class="wrap center">
-    <h2>Quem já vendeu aprova</h2>
-    <div class="mt24">
+    <span class="eyebrow rv">Reputação</span>
+    <h2 class="rv"><span class="dim">Quem vendeu</span> aprova.</h2>
+
+    <div class="rv d1" style="margin-top:34px">
       <div class="nota">
         <div class="n">4.9</div>
         <div style="text-align:left">
@@ -379,22 +502,16 @@ footer a{color:var(--branco);text-decoration:none}
       </div>
     </div>
 
+    <div class="stats">
+      <div class="stat rv"><b data-count="15000" data-suffix="+">0</b><span>compradores na rede</span></div>
+      <div class="stat rv d1"><b data-count="48" data-suffix="">0</b><span>avaliações no Google</span></div>
+      <div class="stat rv d2"><b>Pix</b><span>pagamento na hora</span></div>
+    </div>
+
     <div class="deps">
-      <div class="dep">
-        <div class="stars">★★★★★</div>
-        <p>[INSERIR DEPOIMENTO 1 — foco na rapidez, ex: "vendi no mesmo dia"]</p>
-        <div class="aut">[Nome], São José/SC</div>
-      </div>
-      <div class="dep">
-        <div class="stars">★★★★★</div>
-        <p>[INSERIR DEPOIMENTO 2 — foco em segurança e transparência]</p>
-        <div class="aut">[Nome], Florianópolis/SC</div>
-      </div>
-      <div class="dep">
-        <div class="stars">★★★★★</div>
-        <p>[INSERIR DEPOIMENTO 3 — foco no valor justo da proposta]</p>
-        <div class="aut">[Nome], Palhoça/SC</div>
-      </div>
+      <div class="dep rv"><div class="stars">★★★★★</div><p>[INSERIR DEPOIMENTO 1 — foco na rapidez]</p><div class="aut">[Nome], São José/SC</div></div>
+      <div class="dep rv d1"><div class="stars">★★★★★</div><p>[INSERIR DEPOIMENTO 2 — foco em segurança]</p><div class="aut">[Nome], Florianópolis/SC</div></div>
+      <div class="dep rv d2"><div class="stars">★★★★★</div><p>[INSERIR DEPOIMENTO 3 — foco no valor justo]</p><div class="aut">[Nome], Palhoça/SC</div></div>
     </div>
   </div>
 </section>
@@ -402,29 +519,31 @@ footer a{color:var(--branco);text-decoration:none}
 <!-- CRUZEIRO -->
 <section>
   <div class="wrap">
-    <div class="cruz">
+    <div class="cruz rv">
       <div class="cruz-img">
-        <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/promocaocarflip.png" alt="Promoção Cruzeiro CarFlip Express" loading="lazy">
+        <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/promocaocarflip.png" alt="Promoção Cruzeiro CarFlip" loading="lazy">
       </div>
-      <div class="cruz-txt">
+      <div>
         <div class="tagc">Promoção 2026</div>
-        <h2>Vendeu com a gente?<br>Você concorre a um cruzeiro</h2>
+        <h2><span class="dim">Vendeu com a gente?</span><br>Você concorre a um cruzeiro.</h2>
         <p>Cruzeiro com acompanhante, sorteado no fim do ano. Vendeu seu carro para a CarFlip em 2026, ou indicou alguém que vendeu, já está concorrendo automaticamente.</p>
-        <div class="mt32">
-          <a href="https://wa.me/5548984590562?text=Ol%C3%A1!%20Quero%20vender%20meu%20carro%20e%20concorrer%20ao%20cruzeiro." class="btn" id="cta-cruzeiro">Quero participar</a>
-        </div>
+        <a href="https://wa.me/5548984590562?text=Ol%C3%A1!%20Quero%20vender%20meu%20carro%20e%20concorrer%20ao%20cruzeiro." class="btn" id="cta-cruzeiro">
+          Quero participar
+          <svg viewBox="0 0 24 24"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- OBJECOES + FAQ -->
-<section class="dor">
+<!-- FAQ -->
+<section id="faq">
   <div class="wrap">
     <div class="center">
-      <h2>Perguntas que todo mundo faz</h2>
+      <span class="eyebrow rv">Dúvidas</span>
+      <h2 class="rv"><span class="dim">Perguntas que</span><br>todo mundo faz.</h2>
     </div>
-    <div class="faq">
+    <div class="faq rv d1">
       <details open>
         <summary>Vocês pagam menos que o mercado?</summary>
         <p>É o contrário do que a maioria imagina. Como levamos seu carro pra uma rede de mais de 15 mil compradores no Brasil inteiro, existe disputa pelo veículo. Isso empurra o valor pra cima. E a avaliação é feita com laudo cautelar, então você enxerga exatamente como chegamos no número.</p>
@@ -439,19 +558,15 @@ footer a{color:var(--branco);text-decoration:none}
       </details>
       <details>
         <summary>Preciso levar o carro até vocês?</summary>
-        <p>A avaliação presencial é o que garante a melhor proposta, porque a perícia acontece com o carro na frente. Mas antes disso você já pode mandar os dados no WhatsApp e receber uma prévia, sem sair de casa.</p>
+        <p>A avaliação presencial é o que garante a melhor proposta, porque o laudo cautelar acontece com o carro na frente. Mas antes disso você já pode mandar os dados no WhatsApp e receber uma prévia sem sair de casa.</p>
       </details>
       <details>
-        <summary>Quanto tempo demora tudo?</summary>
-        <p>A avaliação e a proposta acontecem em poucos minutos. Fechando negócio, a documentação e o pagamento seguem de forma ágil, sem você precisar correr atrás de nada.</p>
+        <summary>Quanto tempo demora?</summary>
+        <p>A avaliação e a proposta acontecem em poucos minutos. Fechando negócio, o pagamento é feito por Pix na hora e a documentação segue por nossa conta.</p>
       </details>
       <details>
         <summary>A avaliação tem algum custo?</summary>
-        <p>Nenhum. Avaliação e perícia são gratuitas e sem compromisso. Você só fecha se a proposta fizer sentido pra você.</p>
-      </details>
-      <details>
-        <summary>Como funciona o pagamento?</summary>
-        <p>Depois da negociação fechada e da documentação em ordem, o pagamento é liberado. Todo o processo é acompanhado por nossa equipe até o final.</p>
+        <p>Nenhum. Avaliação e laudo são gratuitos e sem compromisso. Você só fecha se a proposta fizer sentido pra você.</p>
       </details>
       <details>
         <summary>Vocês compram qualquer carro?</summary>
@@ -468,55 +583,78 @@ footer a{color:var(--branco);text-decoration:none}
 <!-- CTA FINAL -->
 <section class="final">
   <div class="wrap center">
-    <h2>Seu carro pode virar dinheiro<br>ainda esta semana</h2>
-    <p class="lead mt16">Enquanto o anúncio fica parado, o carro desvaloriza e o IPVA continua chegando. Aqui você resolve em uma visita.</p>
-    <div class="mt32">
-      <a href="https://wa.me/5548984590562?text=Ol%C3%A1!%20Quero%20avaliar%20meu%20carro%20na%20CarFlip%20Express." class="btn btn-zap" id="cta-final">Avaliar meu carro agora</a>
-      <p class="micro">Avaliação gratuita · Sem compromisso · Rua Cassol, 1199 · Kobrasol</p>
+    <h2 class="rv"><span class="dim">Seu carro pode virar</span><br><span class="hl">dinheiro ainda hoje.</span></h2>
+    <p class="lead rv d1" style="max-width:520px;margin:20px auto 0">Enquanto o anúncio fica parado, o carro desvaloriza e o IPVA continua chegando.</p>
+    <div class="rv d2" style="margin-top:36px">
+      <a href="https://wa.me/5548984590562?text=Ol%C3%A1!%20Quero%20avaliar%20meu%20carro%20na%20CarFlip%20Express." class="btn" id="cta-final">
+        Avaliar meu carro agora
+        <svg viewBox="0 0 24 24"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
+      </a>
+      <p class="micro">Rua Cassol, 1199 · Kobrasol · São José/SC</p>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/LOGOCARFLIP.jpg" alt="CarFlip Express">
-    <p><strong style="color:#fff">CarFlip Express</strong></p>
+    <p style="color:#fff;font-weight:700">CarFlip Express</p>
     <p>Rua Cassol, 1199 · Kobrasol · São José/SC · 88102-340</p>
     <p>Segunda a sábado, até as 19h</p>
-    <p class="mt16"><a href="tel:+5548984590562">(48) 98459-0562</a> · <a href="https://www.instagram.com/carflipexpress/" target="_blank" rel="noopener">@carflipexpress</a></p>
-    <p class="mt16" style="font-size:.78rem;opacity:.6">© 2026 CarFlip Express. Todos os direitos reservados.</p>
+    <p style="margin-top:16px"><a href="tel:+5548984590562">(48) 98459-0562</a> · <a href="https://www.instagram.com/carflipexpress/" target="_blank" rel="noopener">@carflipexpress</a></p>
+    <p style="margin-top:18px;font-size:.76rem;opacity:.5">© 2026 CarFlip Express. Todos os direitos reservados.</p>
   </div>
 </footer>
 
-<!-- WHATSAPP FLUTUANTE -->
 <a href="https://wa.me/5548984590562?text=Ol%C3%A1!%20Quero%20avaliar%20meu%20carro%20na%20CarFlip%20Express."
-   class="zap-float" id="cta-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+   class="zap-float" id="cta-float" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.4"/></svg>
   <span>Avaliar meu carro</span>
 </a>
 
 <script>
-// Se o video nao existir, mostra o aviso no lugar do player
+/* REVEAL ON SCROLL */
+var io = new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+},{threshold:.12, rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+/* CONTADOR ANIMADO */
+function animarNumero(el){
+  var alvo = parseInt(el.dataset.count,10);
+  var suf = el.dataset.suffix || '';
+  var dur = 1600, ini = performance.now();
+  function passo(t){
+    var p = Math.min((t-ini)/dur,1);
+    var eased = 1 - Math.pow(1-p,3);
+    var val = Math.floor(alvo*eased);
+    el.textContent = (val>=1000 ? (val/1000).toFixed(val>=10000?0:1).replace('.',',')+' mil' : val) + suf;
+    if(p<1) requestAnimationFrame(passo);
+  }
+  requestAnimationFrame(passo);
+}
+var ioNum = new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ animarNumero(e.target); ioNum.unobserve(e.target); } });
+},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(function(el){ ioNum.observe(el); });
+
+/* VIDEO FALLBACK */
 (function(){
   var v = document.getElementById('videoCarflip');
   var aviso = document.getElementById('videoAviso');
   if(!v) return;
-
-  // So mostra o aviso se TODAS as fontes falharem
   v.addEventListener('error', function(){
     if (v.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
-      v.style.display = 'none';
-      aviso.style.display = 'block';
+      v.style.display='none'; aviso.style.display='block';
     }
   });
 })();
 
-// Evento de conversao no clique dos CTAs (Meta Pixel + GA4)
+/* TRACKING */
 document.querySelectorAll('a[href*="wa.me"]').forEach(function(el){
   el.addEventListener('click', function(){
-    if (typeof fbq === 'function') { fbq('track', 'Contact'); }
-    if (typeof gtag === 'function') { gtag('event', 'contato_whatsapp', { botao: el.id || 'sem-id' }); }
+    if (typeof fbq === 'function') { fbq('track','Contact'); }
+    if (typeof gtag === 'function') { gtag('event','contato_whatsapp',{botao: el.id || 'sem-id'}); }
   });
 });
 </script>
