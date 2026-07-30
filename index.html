@@ -103,10 +103,18 @@ header{
 /* VIDEO */
 .video-box{
   border:1px solid var(--cinza-borda);border-radius:16px;overflow:hidden;
-  background:var(--preto-2);aspect-ratio:16/9;
-  display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;
+  background:var(--preto-2);
+  max-width:520px;margin:0 auto;
+  display:flex;align-items:center;justify-content:center;text-align:center;
 }
-.video-box video{width:100%;height:100%;object-fit:cover;display:block}
+.video-box video{
+  width:100%;height:auto;max-height:520px;
+  object-fit:contain;display:block;background:#000;
+}
+@media(max-width:600px){
+  .video-box{max-width:100%}
+  .video-box video{max-height:420px}
+}
 .video-ph{color:var(--cinza);font-size:.9rem}
 
 /* DOR */
@@ -274,10 +282,10 @@ footer a{color:var(--branco);text-decoration:none}
              poster="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/atendimento.jpeg">
         <source src="video-carflip.mp4" type="video/mp4">
       </video>
-      <div class="video-ph" id="videoAviso" style="display:none">
+      <div class="video-ph" id="videoAviso" style="display:none;padding:40px 24px">
         <strong style="color:#fff;display:block;margin-bottom:8px">Vídeo ainda não carregado</strong>
         Salve o arquivo com o nome <code style="color:var(--dourado)">video-carflip.mp4</code><br>
-        na mesma pasta deste index.html
+        nesta mesma pasta (carflip-lp)
       </div>
     </div>
   </div>
