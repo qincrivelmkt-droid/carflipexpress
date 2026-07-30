@@ -280,7 +280,10 @@ footer a{color:var(--branco);text-decoration:none}
       <!-- COLOQUE o arquivo "video-carflip.mp4" nesta mesma pasta -->
       <video id="videoCarflip" controls playsinline preload="metadata"
              poster="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/atendimento.jpeg">
-        <source src="video-carflip.mp4" type="video/mp4">
+        <!-- 1) arquivo local, se existir na pasta -->
+        <source src="carflip-express.mp4" type="video/mp4">
+        <!-- 2) fallback: arquivo hospedado no GitHub -->
+        <source src="https://raw.githubusercontent.com/qincrivelmkt-droid/carflipexpress/main/carflip-express.mp4" type="video/mp4">
       </video>
       <div class="video-ph" id="videoAviso" style="display:none;padding:40px 24px">
         <strong style="color:#fff;display:block;margin-bottom:8px">Vídeo ainda não carregado</strong>
@@ -488,12 +491,14 @@ footer a{color:var(--branco);text-decoration:none}
   var v = document.getElementById('videoCarflip');
   var aviso = document.getElementById('videoAviso');
   if(!v) return;
-  v.addEventListener('error', mostrarAviso, true);
-  v.querySelector('source').addEventListener('error', mostrarAviso);
-  function mostrarAviso(){
-    v.style.display = 'none';
-    aviso.style.display = 'block';
-  }
+
+  // So mostra o aviso se TODAS as fontes falharem
+  v.addEventListener('error', function(){
+    if (v.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
+      v.style.display = 'none';
+      aviso.style.display = 'block';
+    }
+  });
 })();
 
 // Evento de conversao no clique dos CTAs (Meta Pixel + GA4)
